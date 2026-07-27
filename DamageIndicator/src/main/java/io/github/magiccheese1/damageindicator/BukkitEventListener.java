@@ -110,7 +110,7 @@ public class BukkitEventListener implements Listener {
             event.getAreaEffectCloud().getPersistentDataContainer().set(
                 poisonedByKey, PersistentDataType.STRING, shooter.getUniqueId().toString()
             );
-        } else if (event.getAreaEffectCloud().getBasePotionData().getType() == PotionType.INSTANT_DAMAGE) {
+        } else if (event.getAreaEffectCloud().getBasePotionData().getType() == PotionType.HARMING) {
             event.getAreaEffectCloud().getPersistentDataContainer().set(
                 harmedByKey, PersistentDataType.STRING, shooter.getUniqueId().toString()
             );
@@ -151,7 +151,7 @@ public class BukkitEventListener implements Listener {
             "format"));
         if (event.getDamager() instanceof final AreaEffectCloud areaEffectCloud) {
             if(areaEffectCloud.getBasePotionData() == null) return;
-            if (areaEffectCloud.getBasePotionData().getType() == PotionType.INSTANT_DAMAGE) {
+            if (areaEffectCloud.getBasePotionData().getType() == PotionType.HARMING) {
                 if (areaEffectCloud.getPersistentDataContainer().has(harmedByKey, PersistentDataType.STRING)) {
                     damager =
                         damageIndicator.getServer().getPlayer(UUID.fromString(
@@ -168,11 +168,11 @@ public class BukkitEventListener implements Listener {
             if (!(projectile.getShooter() instanceof Player player)) return;
 
             damager = player;
-            if (damager.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.ARROW_FIRE) > 0)
+            if (damager.getInventory().getItemInMainHand().getEnchantmentLevel(Enchantment.FLAME) > 0)
                 markEntityAndQueueUnmark(entity, damager.getUniqueId(), 100, burnedByKey);
 
             if (projectile instanceof ThrownPotion potion) {
-                if (potion.getEffects().stream().anyMatch(e -> e.getType().equals(PotionEffectType.HARM))) {
+                if (potion.getEffects().stream().anyMatch(e -> e.getType().equals(PotionEffectType.INSTANT_DAMAGE))) {
                     damageFormat =
                         getConfigurationDamageFormat(configuration, Options.INSTANT_DAMAGE_FORMAT).orElseThrow(
                             () -> new IllegalStateException(
@@ -198,7 +198,7 @@ public class BukkitEventListener implements Listener {
                                 poisonArrowEffectDuration(((Arrow) projectile).getBasePotionData()),
                                 poisonedByKey
                             );
-                        } else if (potionData.getType() == PotionType.INSTANT_DAMAGE) {
+                        } else if (potionData.getType() == PotionType.HARMING) {
                             damageFormat =
                                 getConfigurationDamageFormat(configuration, Options.INSTANT_DAMAGE_FORMAT).orElseThrow(
                                     () -> new IllegalStateException("Plugin configuration did not provide instant " +

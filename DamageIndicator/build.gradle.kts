@@ -7,29 +7,12 @@ plugins {
 dependencies {
     implementation("com.tchristofferson:ConfigUpdater:2.2")
     compileOnly("org.jetbrains:annotations:22.0.0")
-    compileOnly("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
+    compileOnly("org.spigotmc:spigot-api:26.1.2-R0.1-SNAPSHOT")
     implementation(project(":API"))
-    implementation(project(":NMS:1_17_R1"))
-    implementation(project(":NMS:1_18_R1"))
-    implementation(project(":NMS:1_19_R1"))
-    implementation(project(":NMS:1_19_R2"))
-    implementation(project(":NMS:1_19_R3"))
-    implementation(project(":NMS:1_20_R1"))
-    implementation(project(":NMS:1_20_R2"))
-    implementation(project(":NMS:1_20_R3"))
-    implementation(project(":NMS:1_20_R4"))
-    implementation(project(":NMS:1_21_R1"))
-    implementation(project(":NMS:1_21_R2"))
-    implementation(project(":NMS:1_21_R3"))
-    implementation(project(":NMS:1_21_R4"))
-    implementation(project(":NMS:1_21_R5"))
-    implementation(project(":NMS:1_21_R6"))
-    implementation(project(":NMS:1_21_R7"))
-    implementation(project(":NMS:26_R1"))
-
+    implementation(project(":NMS:26_1_R1"))
 
     testImplementation("junit:junit:4.13.1")
-    testImplementation("org.spigotmc:spigot-api:1.17.1-R0.1-SNAPSHOT")
+    testImplementation("org.spigotmc:spigot-api:26.1.2-R0.1-SNAPSHOT")
 }
 tasks {
     test {
@@ -45,7 +28,7 @@ tasks {
 
 bukkit {
     main = "io.github.magiccheese1.damageindicator.DamageIndicatorImpl"
-    apiVersion = "1.17"
+    apiVersion = "26.1"
     commands {
         register("damageindicator") {
             description = "Reload"
