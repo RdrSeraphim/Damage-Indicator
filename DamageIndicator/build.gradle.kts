@@ -25,6 +25,7 @@ dependencies {
     implementation(project(":NMS:1_21_R5"))
     implementation(project(":NMS:1_21_R6"))
     implementation(project(":NMS:1_21_R7"))
+    implementation(project(":NMS:26_R1"))
 
 
     testImplementation("junit:junit:4.13.1")
