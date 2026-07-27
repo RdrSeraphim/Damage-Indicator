@@ -1,7 +1,7 @@
 rootProject.name = "DamageIndicator"
 
 plugins {
-    id("org.gradle.toolchains.foojay-resolver-convention") version ("0.4.0")
+    id("org.gradle.toolchains.foojay-resolver-convention") version "1.0.0"
 }
 
 include(
@@ -23,5 +23,6 @@ include(
     ":NMS:1_21_R5",
     ":NMS:1_21_R6",
     ":NMS:1_21_R7",
+    ":NMS:26_R1",
 )
 

@@ -63,6 +63,12 @@ jobs:
           ./installSpigot.sh 1.21.10
           ./installSpigot.sh 1.21.11
 
+      - name: install spigot 26.1.x
+        run: |
+          cd BuildTools
+          chmod +x ./installSpigot.sh
+          ./installSpigot.sh 26.1.2
+
       - name: return to root
         run: cd ..
 
